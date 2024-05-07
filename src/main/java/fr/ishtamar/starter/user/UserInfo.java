@@ -36,4 +36,6 @@ public class UserInfo {
 
     @NotNull
     private String roles;
+
+    //ajouter createdAt && updatedAt
 }

@@ -34,7 +34,7 @@ public class RentalServiceImpl implements RentalService {
 
     @Override
     public String savePicture(MultipartFile multipartFile) throws IOException {
-        return fileUploadUtil.saveFile(multipartFile.getOriginalFilename(), multipartFile);
+        return fileUploadUtil.saveFile(multipartFile);
     }
 
     @Override

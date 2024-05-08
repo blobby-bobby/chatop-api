@@ -1,5 +1,6 @@
 package fr.ishtamar.starter.controllers;
 
+import fr.ishtamar.starter.filetransfer.FileUploadUtil;
 import fr.ishtamar.starter.rentals.*;
 import fr.ishtamar.starter.security.JwtService;
 import fr.ishtamar.starter.user.UserInfo;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -25,18 +27,26 @@ public class RentalController {
     private final UserInfoService userInfoService;
     private final RentalService rentalService;
     private final RentalMapper rentalMapper;
+    private final FileUploadUtil fileUploadUtil;
 
-    public RentalController(JwtService jwtService, UserInfoServiceImpl userInfoService, RentalServiceImpl rentalService, RentalMapper rentalMapper) {
+    public RentalController(
+            JwtService jwtService,
+            UserInfoServiceImpl userInfoService,
+            RentalServiceImpl rentalService,
+            RentalMapper rentalMapper,
+            FileUploadUtil fileUploadUtil
+    ) {
         this.jwtService = jwtService;
         this.userInfoService = userInfoService;
         this.rentalService = rentalService;
         this.rentalMapper = rentalMapper;
+        this.fileUploadUtil = fileUploadUtil;
     }
 
     // create
     @PostMapping(value="",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Secured("ROLE_USER")
-    public Map<String, String> createRental(CreateRentalRequest createRentalRequest, @RequestHeader(value="Authorization") String jwt) {
+    public Map<String, String> createRental(CreateRentalRequest createRentalRequest, @RequestHeader(value="Authorization") String jwt) throws IOException {
 
         String username = jwtService.extractUsername(jwt.substring(7));
         UserInfo owner = userInfoService.getUserByUsername(username);
@@ -46,7 +56,7 @@ public class RentalController {
                 .price(createRentalRequest.getPrice())
                 .surface(createRentalRequest.getSurface())
                 .description(createRentalRequest.getDescription())
-                .picture("truc.jipegue")
+                .picture(fileUploadUtil.saveFile(createRentalRequest.getPicture()))
                 .created_at(LocalDateTime.now())
                 .updated_at(LocalDateTime.now())
                 .owner(owner)

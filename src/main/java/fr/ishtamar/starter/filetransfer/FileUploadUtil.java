@@ -17,7 +17,7 @@ public class FileUploadUtil {
 	@Value("${fr.ishtamar.starter.files-upload}")
 	private String filesUpload;
 
-	public String saveFile(String fileName, MultipartFile multipartFile) throws IOException {
+	public String saveFile(MultipartFile multipartFile) throws IOException {
 		Path uploadPath = Paths.get(filesUpload);
 
 		if (!Files.exists(uploadPath)) {
@@ -27,11 +27,11 @@ public class FileUploadUtil {
 		String fileCode = RandomStringUtils.randomAlphanumeric(8);
 
 		try (InputStream inputStream = multipartFile.getInputStream()) {
-			Path filePath = uploadPath.resolve(fileCode + '-' + fileName);
+			Path filePath = uploadPath.resolve(fileCode + ".jpg");
 			Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException ioe) {
-			throw new IOException("Could not save file: " + fileName, ioe);
+			throw new IOException("Could not save file", ioe);
 		}
-		return fileCode;
+		return "api/file/" + fileCode + ".jpg";
 	}
 }

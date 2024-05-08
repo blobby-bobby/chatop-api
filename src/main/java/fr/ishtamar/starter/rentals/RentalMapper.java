@@ -16,12 +16,12 @@ public abstract class RentalMapper implements EntityMapper<RentalDto, Rental> {
     UserInfoServiceImpl userInfoService;
 
     @Mappings({
-            @Mapping(target="user", expression="java(this.userInfoService.getUserById(rentalDto.getUser_id()))")
+            @Mapping(target="user", expression="java(this.userInfoService.getUserById(rentalDto.getOwner_id()))")
     })
     public abstract Rental toEntity(RentalDto rentalDto);
 
     @Mappings({
-            @Mapping(source= "rental.user.id",target="user_id")
+            @Mapping(source= "rental.user.id",target="owner_id")
     })
     public abstract RentalDto toDto(Rental rental);
 }

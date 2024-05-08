@@ -12,6 +12,13 @@ spring:
       naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
 
+# fileupload
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+      enabled: true
+
 #JWT Security
 fr.ishtamar.starter:
   lifespan: 9999 #jwt duration in minutes

@@ -44,10 +44,8 @@ public class RentalDto {
     @NotNull
     private Long owner_id;
 
-    @CreatedDate
-    private Date created_at=new Date();
+    private LocalDateTime created_at;
 
-    @UpdateTimestamp
-    private Date updated_at;
+    private LocalDateTime updated_at;
 
 }

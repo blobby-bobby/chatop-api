@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -29,9 +30,6 @@ public class UserDto {
     @NotNull
     private String roles;
 
-    @CreatedDate
-    private Date created_at=new Date();
-
-    @UpdateTimestamp
-    private Date updated_at;
+    private LocalDateTime created_at;
+    private LocalDateTime updated_at;
 }

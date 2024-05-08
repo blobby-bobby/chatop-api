@@ -43,12 +43,11 @@ public class Rental {
 
     @ManyToOne
     @JoinColumn(name="owner_id",referencedColumnName = "id")
-    private UserInfo user;
+    private UserInfo owner;
 
-    @CreatedDate
-    private Date created_at=new Date();
+    private LocalDateTime created_at;
 
-    @UpdateTimestamp
-    private Date updated_at;
+    private LocalDateTime updated_at;
+
 
 }

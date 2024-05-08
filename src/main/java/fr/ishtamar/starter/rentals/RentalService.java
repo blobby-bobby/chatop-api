@@ -15,5 +15,8 @@ public interface RentalService {
 
     String savePicture(MultipartFile multipartFile) throws IOException;
 
-    Rental saveRental(Rental rental);
+    Rental createRental(Rental rental);
+
+    Rental updateRental(Rental rental);
+    
 }

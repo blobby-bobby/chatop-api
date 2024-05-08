@@ -38,7 +38,12 @@ public class RentalServiceImpl implements RentalService {
     }
 
     @Override
-    public Rental saveRental(Rental rental) {
+    public Rental createRental(Rental rental) {
         return repository.save(rental);
+    }
+
+    @Override
+    public Rental updateRental(Rental rental) {
+        return null;
     }
 }

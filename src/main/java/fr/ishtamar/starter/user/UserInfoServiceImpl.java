@@ -7,6 +7,7 @@ import fr.ishtamar.starter.security.UserInfoDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static fr.ishtamar.starter.security.SecurityConfig.passwordEncoder;
@@ -54,6 +55,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public UserInfo modifyUser(String username, ModifyUserRequest request) throws BadCredentialsException, EntityNotFoundException {
         UserInfo userInfo=this.getUserByUsername(username);
+        userInfo.setUpdated_at(LocalDateTime.now());
 
         if(passwordEncoder().matches(request.getOldPassword(),userInfo.getPassword())) {
             if (request.getName() != null && !request.getName().isEmpty()) userInfo.setName(request.getName());

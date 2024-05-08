@@ -22,6 +22,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,6 +60,8 @@ public class AuthController {
                 .email(request.getEmail())
                 .password(request.getPassword())
                 .roles("ROLE_USER")
+                .created_at(LocalDateTime.now())
+                .updated_at(LocalDateTime.now())
                 .build();
 
         service.createUser(userInfo);

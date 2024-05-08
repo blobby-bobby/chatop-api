@@ -42,9 +42,6 @@ public class UserInfo {
     @NotNull
     private String roles;
 
-    @CreatedDate
-    private Date created_at=new Date();
-
-    @UpdateTimestamp
-    private Date updated_at;
+    private LocalDateTime created_at;
+    private LocalDateTime updated_at;
 }

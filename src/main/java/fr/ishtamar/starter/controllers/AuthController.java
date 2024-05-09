@@ -2,7 +2,7 @@ package fr.ishtamar.starter.controllers;
 
 import fr.ishtamar.starter.auth.AuthRequest;
 import fr.ishtamar.starter.auth.CreateUserRequest;
-import fr.ishtamar.starter.auth.ModifyUserRequest;
+import fr.ishtamar.starter.auth.UpdateUserRequest;
 import fr.ishtamar.starter.user.UserDto;
 import fr.ishtamar.starter.user.UserInfo;
 import fr.ishtamar.starter.exceptionhandler.BadCredentialsException;
@@ -105,7 +105,7 @@ public class AuthController {
     @Secured("ROLE_USER")
     public Map<String,String> userModifyProfile(
             @RequestHeader(value="Authorization",required=false) String jwt,
-            @Valid @RequestBody ModifyUserRequest request
+            @Valid @RequestBody UpdateUserRequest request
     ) throws EntityNotFoundException, BadCredentialsException, ConstraintViolationException {
         UserInfo candidate=service.modifyUser(jwtService.extractUsername(jwt.substring(7)),request);
 

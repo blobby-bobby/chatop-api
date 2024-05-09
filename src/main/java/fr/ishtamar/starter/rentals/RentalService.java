@@ -17,6 +17,6 @@ public interface RentalService {
 
     Rental createRental(Rental rental);
 
-    Rental updateRental(Rental rental);
+    Rental updateRental(Rental rental, UpdateRentalRequest updateRentalRequest);
     
 }

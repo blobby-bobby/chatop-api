@@ -1,5 +1,7 @@
 package fr.ishtamar.starter.controllers;
 
+import fr.ishtamar.starter.exceptionhandler.EntityNotFoundException;
+import fr.ishtamar.starter.exceptionhandler.GenericException;
 import fr.ishtamar.starter.filetransfer.FileUploadUtil;
 import fr.ishtamar.starter.rentals.*;
 import fr.ishtamar.starter.security.JwtService;
@@ -7,6 +9,7 @@ import fr.ishtamar.starter.user.UserInfo;
 import fr.ishtamar.starter.user.UserInfoService;
 import fr.ishtamar.starter.user.UserInfoServiceImpl;
 import io.jsonwebtoken.Jwt;
+import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.userdetails.User;
@@ -18,6 +21,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/rentals")
@@ -43,7 +47,21 @@ public class RentalController {
         this.fileUploadUtil = fileUploadUtil;
     }
 
-    // create
+    // get all rentals
+    @GetMapping(value="")
+    public Map<String, List<RentalDto>> getAllRentals() {
+        Map<String, List<RentalDto>> map = new HashMap<>();
+        map.put("rentals", rentalMapper.toDto(rentalService.getAllRentals()));
+        return map;
+    }
+
+    // get one rental by id
+    @GetMapping(value = "/{id}")
+    public RentalDto getRental(@PathVariable("id") final Long id) {
+        return rentalMapper.toDto(rentalService.getRentalById(id));
+    }
+
+    // create a rental
     @PostMapping(value="",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Secured("ROLE_USER")
     public Map<String, String> createRental(CreateRentalRequest createRentalRequest, @RequestHeader(value="Authorization") String jwt) throws IOException {
@@ -69,15 +87,26 @@ public class RentalController {
         return map;
     }
 
-    // get all rentals
-    @GetMapping(value="")
-    public Map<String, List<RentalDto>> getAllRentals() {
-        Map<String, List<RentalDto>> map = new HashMap<>();
-        map.put("rentals", rentalMapper.toDto(rentalService.getAllRentals()));
-        return map;
+    // update a rental
+    @PutMapping(value="/{id}")
+    @Secured("ROLE_USER")
+    public RentalDto updateRental(
+            @PathVariable Long id,
+            @RequestHeader(value = "Authorization") String jwt,
+            @Valid UpdateRentalRequest updateRentalRequest
+    ) throws GenericException, EntityNotFoundException {
+        String username = jwtService.extractUsername(jwt.substring(7));
+        UserInfo sender = userInfoService.getUserByUsername(username);
+
+        // retrieve the rental in the database with its id
+        Rental rentalToUpdate = rentalService.getRentalById(id);
+
+        // checks expected owner_id
+        if (!Objects.equals(sender.getId(), rentalToUpdate.getOwner().getId())) {
+            throw new GenericException("Owner id does not match");
+        } else {
+            return rentalMapper.toDto(rentalService.updateRental(rentalToUpdate, updateRentalRequest));
+        }
+
     }
-
-    // update
-
-    // delete
 }

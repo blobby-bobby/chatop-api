@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ModifyUserRequest {
+public class UpdateUserRequest {
     @Size(max=30)
     private String name;
 

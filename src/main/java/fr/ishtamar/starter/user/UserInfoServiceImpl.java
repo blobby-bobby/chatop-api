@@ -2,7 +2,7 @@ package fr.ishtamar.starter.user;
 
 import fr.ishtamar.starter.exceptionhandler.BadCredentialsException;
 import fr.ishtamar.starter.exceptionhandler.EntityNotFoundException;
-import fr.ishtamar.starter.auth.ModifyUserRequest;
+import fr.ishtamar.starter.auth.UpdateUserRequest;
 import fr.ishtamar.starter.security.UserInfoDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -53,7 +53,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public UserInfo modifyUser(String username, ModifyUserRequest request) throws BadCredentialsException, EntityNotFoundException {
+    public UserInfo modifyUser(String username, UpdateUserRequest request) throws BadCredentialsException, EntityNotFoundException {
         UserInfo userInfo=this.getUserByUsername(username);
         userInfo.setUpdated_at(LocalDateTime.now());
 

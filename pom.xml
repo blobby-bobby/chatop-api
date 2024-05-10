@@ -8,15 +8,15 @@
 		<version>3.2.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>fr.ishtamar.security</groupId>
-	<artifactId>restStarter</artifactId>
+	<groupId>fr.chatop.api</groupId>
+	<artifactId>api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>jwt</name>
-	<description>Starter for security6 and jwt</description>
+	<name>chatop</name>
+	<description>Backend and REST for Chatop app</description>
 	<properties>
 		<java.version>21</java.version>
-		<sonar.projectKey>IshtamarFr_RestStarter</sonar.projectKey>
-		<sonar.projectName>RestStarter</sonar.projectName>
+		<sonar.projectKey>Chatop_api</sonar.projectKey>
+		<sonar.projectName>Chatop</sonar.projectName>
 		<sonar.qualitygate.wait>true</sonar.qualitygate.wait>
 	</properties>
 	<dependencies>

@@ -3,9 +3,9 @@ spring:
   main.allow-circular-references: false
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:15432/chatop
-    username: postgres
-    password: example
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -22,7 +22,7 @@ spring:
 #JWT Security
 fr.chatop.api:
   lifespan: 9999 #jwt duration in minutes
-  secret: 1117566B59812468367639792F423E4528482B4D6253A95468574B5A71347211
+  secret: ${JWT_SECRET}
   dev-url: ${server.servlet.context-path}/
   prod-url: test.com
   files-upload: files-upload

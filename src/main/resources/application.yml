@@ -20,7 +20,7 @@ spring:
       enabled: true
 
 #JWT Security
-fr.ishtamar.starter:
+fr.chatop.api:
   lifespan: 9999 #jwt duration in minutes
   secret: 1117566B59812468367639792F423E4528482B4D6253A95468574B5A71347211
   dev-url: ${server.servlet.context-path}/
@@ -36,7 +36,7 @@ server:
 logging:
   level:
     root: ERROR
-    fr.ishtamar.starter: INFO
+    fr.chatop.api: INFO
     org.springframework.boot.web.embedded.tomcat: INFO
   file:
     path: logs/

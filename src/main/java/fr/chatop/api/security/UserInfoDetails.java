@@ -10,12 +10,20 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Represents user details for authentication and authorization in Spring Security (roles, password, etc).
+ */
 public class UserInfoDetails implements UserDetails {
 
     private final String name;
     private final String password;
     private final List<GrantedAuthority> authorities;
 
+    /**
+     * Build UserInfoDetails object from a UserInfo object.
+     * parse authorities into a list of strings
+     * @param userInfo UserInfo object containing user details.
+     */
     public UserInfoDetails(UserInfo userInfo) {
         name = userInfo.getEmail();
         password = userInfo.getPassword();
@@ -24,6 +32,9 @@ public class UserInfoDetails implements UserDetails {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Implementing UserDetails interface methods
+     */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;

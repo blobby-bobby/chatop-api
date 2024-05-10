@@ -1,4 +1,4 @@
-package fr.chatop.api.filetransfer;
+package fr.chatop.api.util;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Value;

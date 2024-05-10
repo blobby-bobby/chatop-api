@@ -1,6 +1,6 @@
 package fr.chatop.api.security;
 
-import fr.chatop.api.user.UserInfoServiceImpl;
+import fr.chatop.api.services.impl.UserInfoServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

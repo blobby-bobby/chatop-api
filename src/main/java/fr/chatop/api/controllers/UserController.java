@@ -1,9 +1,9 @@
 package fr.chatop.api.controllers;
 
-import fr.chatop.api.user.UserDto;
-import fr.chatop.api.user.UserInfoService;
-import fr.chatop.api.user.UserInfoServiceImpl;
-import fr.chatop.api.user.UserMapper;
+import fr.chatop.api.dto.UserDto;
+import fr.chatop.api.services.UserInfoService;
+import fr.chatop.api.services.impl.UserInfoServiceImpl;
+import fr.chatop.api.mappers.UserMapper;
 import fr.chatop.api.exceptionhandler.EntityNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

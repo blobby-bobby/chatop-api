@@ -1,8 +1,8 @@
 package fr.chatop.api.controllers;
 
-import fr.chatop.api.messages.MessageService;
-import fr.chatop.api.messages.MessageDto;
-import fr.chatop.api.messages.MessageServiceImpl;
+import fr.chatop.api.services.MessageService;
+import fr.chatop.api.dto.MessageDto;
+import fr.chatop.api.services.impl.MessageServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.web.bind.annotation.PostMapping;

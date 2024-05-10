@@ -1,7 +1,11 @@
-package fr.chatop.api.messages;
+package fr.chatop.api.services.impl;
 
-import fr.chatop.api.rentals.RentalRepository;
-import fr.chatop.api.user.UserInfoRepository;
+import fr.chatop.api.dto.MessageDto;
+import fr.chatop.api.mappers.MessageMapper;
+import fr.chatop.api.repositories.MessageRepository;
+import fr.chatop.api.repositories.RentalRepository;
+import fr.chatop.api.repositories.UserInfoRepository;
+import fr.chatop.api.services.MessageService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

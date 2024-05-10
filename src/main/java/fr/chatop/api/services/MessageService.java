@@ -1,4 +1,6 @@
-package fr.chatop.api.messages;
+package fr.chatop.api.services;
+
+import fr.chatop.api.dto.MessageDto;
 
 public interface MessageService {
     /**

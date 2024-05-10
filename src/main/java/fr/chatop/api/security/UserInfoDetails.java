@@ -1,6 +1,6 @@
 package fr.chatop.api.security;
 
-import fr.chatop.api.user.UserInfo;
+import fr.chatop.api.entities.UserInfo;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

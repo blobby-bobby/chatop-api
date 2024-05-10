@@ -1,16 +1,16 @@
 package fr.chatop.api.controllers;
 
-import fr.chatop.api.auth.AuthRequest;
-import fr.chatop.api.auth.CreateUserRequest;
-import fr.chatop.api.auth.UpdateUserRequest;
+import fr.chatop.api.requests.auth.AuthRequest;
+import fr.chatop.api.requests.auth.CreateUserRequest;
+import fr.chatop.api.requests.auth.UpdateUserRequest;
 import fr.chatop.api.exceptionhandler.BadCredentialsException;
-import fr.chatop.api.user.UserDto;
-import fr.chatop.api.user.UserInfo;
+import fr.chatop.api.dto.UserDto;
+import fr.chatop.api.entities.UserInfo;
 import fr.chatop.api.exceptionhandler.EntityNotFoundException;
-import fr.chatop.api.user.UserMapper;
+import fr.chatop.api.mappers.UserMapper;
 import fr.chatop.api.security.JwtService;
-import fr.chatop.api.user.UserInfoService;
-import fr.chatop.api.user.UserInfoServiceImpl;
+import fr.chatop.api.services.UserInfoService;
+import fr.chatop.api.services.impl.UserInfoServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

@@ -1,9 +1,12 @@
-package fr.chatop.api.user;
+package fr.chatop.api.services.impl;
 
 import fr.chatop.api.exceptionhandler.BadCredentialsException;
 import fr.chatop.api.exceptionhandler.EntityNotFoundException;
-import fr.chatop.api.auth.UpdateUserRequest;
+import fr.chatop.api.requests.auth.UpdateUserRequest;
 import fr.chatop.api.security.UserInfoDetails;
+import fr.chatop.api.services.UserInfoService;
+import fr.chatop.api.entities.UserInfo;
+import fr.chatop.api.repositories.UserInfoRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 

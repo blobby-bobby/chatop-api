@@ -1,6 +1,7 @@
-package fr.chatop.api.messages;
+package fr.chatop.api.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -11,24 +12,35 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(description = "the mapped to Dto message model")
-public class MessageDto {
+@Builder
+@Schema(description = "the mapped to Dto rental model")
+public class RentalDto {
     private Long id;
 
     @NotNull
-    private Long rental_id;
+    @Size(max=63)
+    private String name;
 
     @NotNull
-    private Long user_id;
+    @Min(value=0)
+    private Float surface;
 
     @NotNull
-    @Size(max = 1000)
-    private String message;
+    @Min(value=0)
+    private Float price;
+
+    private String picture;
+
+    @Size(max=1000)
+    private String description;
+
+    @NotNull
+    private Long owner_id;
 
     private LocalDateTime created_at;
 
     private LocalDateTime updated_at;
+
 }

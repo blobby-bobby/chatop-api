@@ -1,12 +1,17 @@
 package fr.chatop.api.controllers;
 
+import fr.chatop.api.dto.RentalDto;
 import fr.chatop.api.exceptionhandler.GenericException;
-import fr.chatop.api.user.UserInfo;
-import fr.chatop.api.user.UserInfoService;
-import fr.chatop.api.user.UserInfoServiceImpl;
+import fr.chatop.api.entities.Rental;
+import fr.chatop.api.mappers.RentalMapper;
+import fr.chatop.api.services.RentalService;
+import fr.chatop.api.services.impl.RentalServiceImpl;
+import fr.chatop.api.entities.UserInfo;
+import fr.chatop.api.services.UserInfoService;
+import fr.chatop.api.services.impl.UserInfoServiceImpl;
 import fr.chatop.api.exceptionhandler.EntityNotFoundException;
-import fr.chatop.api.filetransfer.FileUploadUtil;
-import fr.chatop.api.rentals.*;
+import fr.chatop.api.util.FileUploadUtil;
+import fr.chatop.api.requests.rentals.*;
 import fr.chatop.api.security.JwtService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

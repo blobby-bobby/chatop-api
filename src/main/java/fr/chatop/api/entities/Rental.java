@@ -1,4 +1,4 @@
-package fr.chatop.api.user;
+package fr.chatop.api.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -15,30 +15,34 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(uniqueConstraints={
-        @UniqueConstraint(columnNames = {"name"}),
-        @UniqueConstraint(columnNames = {"email"})
-})
-public class UserInfo {
+public class Rental {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
-    @Size(max=30)
+    @Size(max=63)
     private String name;
 
     @NotNull
-    @Size(max=63)
-    private String email;
+    private Float surface;
 
     @NotNull
-    @Size(max=60)
-    private String password;
+    private Float price;
 
-    @NotNull
-    private String roles;
+    private String picture;
+
+    @Size(max=1000)
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name="owner_id",referencedColumnName = "id")
+    private UserInfo owner;
 
     private LocalDateTime created_at;
+
     private LocalDateTime updated_at;
+
+
 }

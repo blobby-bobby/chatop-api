@@ -1,7 +1,11 @@
-package fr.chatop.api.rentals;
+package fr.chatop.api.services.impl;
 
 import fr.chatop.api.exceptionhandler.EntityNotFoundException;
-import fr.chatop.api.filetransfer.FileUploadUtil;
+import fr.chatop.api.util.FileUploadUtil;
+import fr.chatop.api.entities.Rental;
+import fr.chatop.api.requests.rentals.UpdateRentalRequest;
+import fr.chatop.api.repositories.RentalRepository;
+import fr.chatop.api.services.RentalService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

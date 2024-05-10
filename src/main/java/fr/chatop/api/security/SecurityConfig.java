@@ -1,7 +1,7 @@
 package fr.chatop.api.security;
 
-import fr.chatop.api.user.UserInfoRepository;
-import fr.chatop.api.user.UserInfoServiceImpl;
+import fr.chatop.api.repositories.UserInfoRepository;
+import fr.chatop.api.services.impl.UserInfoServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

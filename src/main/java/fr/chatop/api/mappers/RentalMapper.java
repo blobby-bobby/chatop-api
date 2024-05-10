@@ -1,6 +1,8 @@
-package fr.chatop.api.rentals;
+package fr.chatop.api.mappers;
 
-import fr.chatop.api.user.UserInfoServiceImpl;
+import fr.chatop.api.dto.RentalDto;
+import fr.chatop.api.entities.Rental;
+import fr.chatop.api.services.impl.UserInfoServiceImpl;
 import fr.chatop.api.util.EntityMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

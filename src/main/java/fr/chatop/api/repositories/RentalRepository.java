@@ -1,5 +1,6 @@
-package fr.chatop.api.rentals;
+package fr.chatop.api.repositories;
 
+import fr.chatop.api.entities.Rental;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

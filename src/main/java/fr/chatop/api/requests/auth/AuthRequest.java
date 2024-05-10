@@ -1,4 +1,4 @@
-package fr.chatop.api.auth;
+package fr.chatop.api.requests.auth;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
